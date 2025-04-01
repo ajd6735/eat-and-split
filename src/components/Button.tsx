@@ -2,7 +2,7 @@ import React from 'react';
 
 interface ButtonProp{
     children: string;
-    onClick: any;
+    onClick: () => void;
 }
 
 const Button: React.FC<ButtonProp> = ({children, onClick}) => {

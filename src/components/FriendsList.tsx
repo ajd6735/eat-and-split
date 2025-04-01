@@ -3,7 +3,7 @@ import friends from '../data/friends';
 import Button from './Button';
 
 interface FriendProps{
-    id: number;
+    id: string;
     name: string;
     image: string;
     balance: number;
@@ -17,7 +17,7 @@ const FriendsList: React.FC = () => {
 
     return (
         <ul>
-            {friends.map((friend, index) => (
+            {friends.map((friend) => (
                 <Friend friend={friend} key={friend.id}/>
             ))}
         </ul>
@@ -25,6 +25,10 @@ const FriendsList: React.FC = () => {
 }
 
 export const Friend: React.FC<FriendComponentsProps> = ({ friend }) => {
+    function handleBtn() {
+        
+    }
+
     return (
         <li>
             <img src={friend.image} alt={friend.name}></img>
@@ -34,7 +38,7 @@ export const Friend: React.FC<FriendComponentsProps> = ({ friend }) => {
             {friend.balance > 0 && <p className='green'>{friend.name} owes you ${Math.abs(friend.balance)}</p>} 
             {friend.balance === 0 && <p>You and {friend.name} are even!</p>} 
 
-            <Button>Select</Button>
+            <Button onClick={handleBtn}>Select</Button>
             
         </li>
     );

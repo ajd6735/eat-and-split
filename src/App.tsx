@@ -19,7 +19,9 @@ const App: React.FC = () => {
       <div className="sidebar">
         <FriendsList />
         {showAddFriend && <AddFriendForm />}
-        <Button onClick={handleAddFriendBtn}> { showAddFriend ?  'Close' : 'Add Friend' }</Button>
+        <Button onClick={handleAddFriendBtn}>
+          {showAddFriend ? 'Close' : 'Add Friend'}
+        </Button>
       </div>
 
       <SplitBillForm />

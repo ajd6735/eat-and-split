@@ -1,4 +1,4 @@
-const initialFriends = [
+const friends = [
     {
         id: 113456,
         name: "Clark",
@@ -19,4 +19,4 @@ const initialFriends = [
     }
 ];
 
-export default initialFriends;
+export default friends;

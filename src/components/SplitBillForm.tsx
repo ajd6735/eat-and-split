@@ -1,16 +1,10 @@
 import React, { useState } from 'react';
 import Button from './Button';
-import friends from '../data/friends';
-
-interface FriendsProps{
-    id: number;
-    name: string;
-    image: string;
-    balance: number;
-}
+import friends from '../data/friends-data';
+import { FriendInterface } from '../types/friend';
 
 interface Friend{
-    friend: FriendsProps;
+    friend: FriendInterface;
 }
 
 

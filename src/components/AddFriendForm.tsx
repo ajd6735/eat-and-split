@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import Button from './Button';
-import friends from '../data/friends';
-import { Friend } from './FriendsList';
+import { FriendInterface } from '../types/friend';
 
-const AddFriendForm: React.FC = () => {
+interface AddFriendProp {
+    onAddFriend: (friend: FriendInterface) => void;
+}
+
+const AddFriendForm: React.FC<AddFriendProp> = ({ onAddFriend }) => {
+    
     const [name, setName] = useState('');
     const [image, setImage] = useState('https://i.pravatar.cc/48');
 
@@ -21,8 +25,8 @@ const AddFriendForm: React.FC = () => {
             balance: 0
         };
 
-        console.log(newFriend);
-        // friends.push(newFriend);
+        onAddFriend(newFriend);
+
         setName('');
         setImage('https://i.pravatar.cc/48');
     }
@@ -30,10 +34,8 @@ const AddFriendForm: React.FC = () => {
     
 
     function handleAddBtn() {
-
-        // setName('');
-        // setImage('');
     }
+
     return (
         <div className='form-container' >
             <form className='form-add-friend' onSubmit={handleSubmitForm}>

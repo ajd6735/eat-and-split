@@ -1,18 +1,12 @@
 import Button from './Button';
-
-interface FriendProps {
-    id: string;
-    name: string;
-    image: string;
-    balance: number;
-}
+import { FriendInterface } from '../types/friend';
 
 interface FriendComponentsProps {
-    friend: FriendProps;
+    friend: FriendInterface;
 }
 
 interface FriendsArr {
-    friends: FriendProps[]
+    friends: FriendInterface[]
 }
 
 const FriendsList: React.FC<FriendsArr> = ({friends}) => {
@@ -27,6 +21,7 @@ const FriendsList: React.FC<FriendsArr> = ({friends}) => {
 }
 
 export const Friend: React.FC<FriendComponentsProps> = ({ friend }) => {
+    
     function handleBtn() {
         //add the logic here
     }

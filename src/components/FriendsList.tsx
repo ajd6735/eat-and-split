@@ -1,24 +1,26 @@
-
-import friends from '../data/friends';
 import Button from './Button';
 
-interface FriendProps{
+interface FriendProps {
     id: string;
     name: string;
     image: string;
     balance: number;
 }
 
-interface FriendComponentsProps{
+interface FriendComponentsProps {
     friend: FriendProps;
 }
 
-const FriendsList: React.FC = () => {
+interface FriendsArr {
+    friends: FriendProps[]
+}
+
+const FriendsList: React.FC<FriendsArr> = ({friends}) => {
 
     return (
         <ul>
             {friends.map((friend) => (
-                <Friend friend={friend} key={friend.id}/>
+                <Friend friend={friend} key={friend.id} />
             ))}
         </ul>
     );
@@ -26,7 +28,7 @@ const FriendsList: React.FC = () => {
 
 export const Friend: React.FC<FriendComponentsProps> = ({ friend }) => {
     function handleBtn() {
-        
+        //add the logic here
     }
 
     return (
@@ -38,8 +40,7 @@ export const Friend: React.FC<FriendComponentsProps> = ({ friend }) => {
             {friend.balance > 0 && <p className='green'>{friend.name} owes you ${Math.abs(friend.balance)}</p>} 
             {friend.balance === 0 && <p>You and {friend.name} are even!</p>} 
 
-            <Button onClick={handleBtn}>Select</Button>
-            
+            <Button onClick={handleBtn}>Select</Button>           
         </li>
     );
 }

@@ -22,7 +22,7 @@ const AddFriendForm: React.FC = () => {
         };
 
         console.log(newFriend);
-        friends.push(newFriend);
+        // friends.push(newFriend);
         setName('');
         setImage('https://i.pravatar.cc/48');
     }
@@ -35,8 +35,8 @@ const AddFriendForm: React.FC = () => {
         // setImage('');
     }
     return (
-        <div className='form-container' onSubmit={handleSubmitForm}>
-            <form className='form-add-friend' >
+        <div className='form-container' >
+            <form className='form-add-friend' onSubmit={handleSubmitForm}>
                 <label htmlFor='friend name'>🙋🏼‍♂️Friend</label>
                 <input type='text'
                     value={name}

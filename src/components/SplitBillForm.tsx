@@ -11,13 +11,24 @@ const SplitBillForm: React.FC<FriendProp> = ({ selectedFriend }) => {
     const [bill, setBill] = useState<number | ''>('');
     const [paidByUser, setPaidByUser] = useState<number | ''>('');
     const [whoIsPaying, setWhoIsPaying] = useState<string>('user');
-    
+
     const billValue = Number(bill) || 0;
     const paidByUserValue = Number(paidByUser) || 0;
     const paidByFriend = billValue - paidByUserValue;
 
     function handleSplitBillBtn() {
 
+    }
+
+    function handleExpenses(e: any) {
+        const value = e.target.value;
+        const num = Number(value);
+
+        if (value === '') {
+            setPaidByUser('');
+        } else if (num >= 0 && num <= billValue) {
+            setPaidByUser(num);
+        }
     }
 
     return (
@@ -36,7 +47,7 @@ const SplitBillForm: React.FC<FriendProp> = ({ selectedFriend }) => {
                 <input type='text'
                     className='your bill'
                     value={paidByUser}
-                    onChange={(e) => setPaidByUser(e.target.value === '' ? '' : Number(e.target.value))}
+                    onChange={handleExpenses}
                 />
 
                 <label htmlFor='friend expense'>🙋🏼‍♂️ {selectedFriend.name}'s Expense</label>

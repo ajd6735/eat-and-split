@@ -4,10 +4,11 @@ import { FriendInterface } from '../types/friend';
 
 interface FriendProp {
     selectedFriend: FriendInterface;
+    onSplitBill: (value: number) => void;
 }
 
 
-const SplitBillForm: React.FC<FriendProp> = ({ selectedFriend }) => {
+const SplitBillForm: React.FC<FriendProp> = ({ selectedFriend, onSplitBill }) => {
     const [bill, setBill] = useState<number | ''>('');
     const [paidByUser, setPaidByUser] = useState<number | ''>('');
     const [whoIsPaying, setWhoIsPaying] = useState<string>('user');
@@ -31,9 +32,16 @@ const SplitBillForm: React.FC<FriendProp> = ({ selectedFriend }) => {
         }
     }
 
+    function submitForm(e: any) {
+        e.preventDefault();
+
+        if (!bill || !paidByUser) return;
+        onSplitBill(whoIsPaying === 'user' ? paidByFriend : -paidByUser);
+    }
+
     return (
         <div className='form-container'>
-            <form className='form-split-bill' >
+            <form className='form-split-bill' onSubmit={submitForm}>
                 <h2>Split a bill with {selectedFriend.name}</h2>
 
                 <label htmlFor='bill'>💰Bill Value</label>

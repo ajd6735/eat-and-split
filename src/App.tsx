@@ -28,6 +28,12 @@ const App: React.FC = () => {
     setShowAddFriend(false);
   }
 
+  function handleSplitBill(value: number) {
+    if (!selectedFriend) return;
+    
+    setFriends(friends => friends.map(friend =>  friend.id === selectedFriend.id ? {...friend, balance: friend.balance + value} : friend));
+  }
+
   return (
     <div className="app">
 
@@ -44,7 +50,7 @@ const App: React.FC = () => {
         </Button>
       </div>
 
-      {selectedFriend && <SplitBillForm selectedFriend={ selectedFriend } />}
+      {selectedFriend && <SplitBillForm selectedFriend={selectedFriend} onSplitBill={handleSplitBill} />}
     </div>
   );
 }
